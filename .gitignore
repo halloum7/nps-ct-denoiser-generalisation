@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pt
+*.npy
+*.dcm
+*.IMA
+kaggle.json
+.env
+data/
+cache/
