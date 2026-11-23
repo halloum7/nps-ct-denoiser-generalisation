@@ -11,7 +11,7 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.edgecol
 ARCH = [("R", "REDCNN"), ("Dn", "DnCNN")]
 fine2smooth = np.array([a < b for a, b in h.PAIRS])   # train sharper -> test smoother
 
-# ---------------- Figure 2: L vs W1
+# ---------------- Figure 3: L vs W1
 fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.5), constrained_layout=True)
 for ax, (k, name) in zip(axs, ARCH):
     W = np.concatenate([v["W"] for v in h.D.values()]); L = 100 * np.concatenate([v[k] for v in h.D.values()])
@@ -26,9 +26,9 @@ for ax, (k, name) in zip(axs, ARCH):
 axs[0].set_ylabel("Generalisation loss L (%)")
 h_, l_ = axs[1].get_legend_handles_labels(); fig.legend(h_, l_, frameon=False, fontsize=8.5, loc="outside lower center", ncol=2)
 for ext in ("png", "pdf"):
-    fig.savefig(f"Fig2_L_vs_W1.{ext}", dpi=300)
+    fig.savefig(f"Fig3_L_vs_W1.{ext}", dpi=300)
 
-# ---------------- Figure 3: median L heatmap (train alpha x test alpha, beta = 1)
+# ---------------- Figure 4: median L heatmap (train alpha x test alpha, beta = 1)
 A = h.A; cmap = LinearSegmentedColormap.from_list("seq", ["#f6f5f2", ORANGE])
 fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.3), constrained_layout=True)
 mats = {}
@@ -51,5 +51,5 @@ for ax, (k, name) in zip(axs, ARCH):
     for s in ax.spines.values(): s.set_visible(False)
 cb = fig.colorbar(im, ax=axs, shrink=0.8); cb.set_label("Median generalisation loss L (%)\n(values < 0 shown as 0)")
 for ext in ("png", "pdf"):
-    fig.savefig(f"Fig3_L_matrix.{ext}", dpi=300)
+    fig.savefig(f"Fig4_L_matrix.{ext}", dpi=300)
 print({k: np.round(m, 1).tolist() for k, m in mats.items()})

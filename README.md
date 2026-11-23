@@ -42,7 +42,8 @@ code/
   stage2d_driver.py      notebook cell that runs Stage 2d end to end
   test_*.py              offline tests on synthetic data with known answers
 figures/
-  make_figs.py, h1_data.py   reproduce Fig. 2 and Fig. 3 of the article (PNG 300 dpi + PDF)
+  make_figs.py, h1_data.py   reproduce Fig. 3 and Fig. 4 of the article (PNG 300 dpi + PDF)
+  make_figs_45.py            reproduces Fig. 2 and Fig. 5 from results/ (PNG 300 dpi + PDF)
 results/
   stage2d_results.json       all pre-registered outcomes
   metrics.csv                all 3 360 evaluations (model x test patient x test condition)
@@ -71,11 +72,12 @@ python test_stage1.py
 python test_stage1b.py
 ```
 
-Figures 2 and 3:
+Figures 2 to 5:
 
 ```
 cd figures
 python make_figs.py
+python make_figs_45.py
 ```
 
 ## Requirements
